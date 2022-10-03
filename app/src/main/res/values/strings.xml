@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Avaliacao</string>
+    <string name="usuario">Digite seu Usuário</string>
+    <string name="senha">Digite sua Senha</string>
+    <string name="entrar">Entrar</string>
+    <string name="btUsers">Users</string>
+</resources>
