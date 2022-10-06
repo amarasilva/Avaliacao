@@ -28,7 +28,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
 
         }
               if (view.getId() == R.id.MAbuttonPost) {
-                  Intent intent = new Intent(view.getContext(), PostActivity.class);
+                  Intent intent = new Intent(view.getContext(), PostsActivity.class);
                   startActivity(intent);
 
     }
