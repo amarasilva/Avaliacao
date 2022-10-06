@@ -36,6 +36,7 @@ public class User implements Parcelable {
     public String getEmail() {
         return email;
     }
+
 //criando o metodo construtor a partir de um parcelable
     protected User(Parcel in) {
         id = in.readInt();

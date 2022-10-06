@@ -14,9 +14,15 @@
         tools:layout_editor_absoluteY="1dp">
 
         <Button
-            android:id="@+id/MAbutton"
+            android:id="@+id/MAbuttonUser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btUsers" />
+
+        <Button
+            android:id="@+id/MAbuttonPost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btPost" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
