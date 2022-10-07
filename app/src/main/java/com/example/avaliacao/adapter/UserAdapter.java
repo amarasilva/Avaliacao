@@ -36,6 +36,8 @@ public class UserAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         TextView tv1 = holder.itemView.findViewById(R.id.textViewVH_ID);
         tv1.setText(obj.getId() + "");
         ((TextView) holder.itemView.findViewById(R.id.textViewVH_NAME)).setText(obj.getName());
+        ((TextView) holder.itemView.findViewById(R.id.textViewVH_USERNAME)).setText(obj.getUsername());
+        ((TextView) holder.itemView.findViewById(R.id.textView_VH_EMAIL)).setText(obj.getEmail());
     }
 
     @Override

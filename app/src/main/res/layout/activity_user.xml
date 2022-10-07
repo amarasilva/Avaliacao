@@ -9,7 +9,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RecycleViewUsers"
         android:layout_width="409dp"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginStart="1dp"
         android:layout_marginTop="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -22,8 +22,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="user"
-        app:layout_constraintBottom_toTopOf="@+id/RecycleViewUsers"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteX="192dp"
+        tools:layout_editor_absoluteY="42dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

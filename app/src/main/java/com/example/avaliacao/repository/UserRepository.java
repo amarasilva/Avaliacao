@@ -50,7 +50,7 @@ public class UserRepository implements Response.Listener<JSONArray>, Response.Er
     public User createUserFromJson(JSONObject json) {
         try {
             return new User(json.getInt("id"), json.getString("name"),
-                    json.getString("username"), json.getString("username"));
+                    json.getString("username"), json.getString("email"));
         } catch (JSONException e) {
             e.printStackTrace();
             return null;
@@ -92,7 +92,7 @@ public class UserRepository implements Response.Listener<JSONArray>, Response.Er
                 JSONObject json = response.getJSONObject(i);
                 Log.d(TAG, "onResponse: " + json.toString());
                 users.add(new User(json.getInt("id"), json.getString("name"),
-                        json.getString("username"), json.getString("username")));
+                        json.getString("username"), json.getString("email")));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
