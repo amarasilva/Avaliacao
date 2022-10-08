@@ -44,7 +44,7 @@ public class User implements Parcelable {
         username = in.readString();
         email = in.readString();
     }
-//metodo criador
+//metodo criador do parcel
     public static final Creator<User> CREATOR = new Creator<User>() {
         @Override
         public User createFromParcel(Parcel in) {
@@ -61,6 +61,7 @@ public class User implements Parcelable {
     public int describeContents() {
         return 0;
     }
+
 // manda incluir em um parcel os atributos
     @Override
     public void writeToParcel(Parcel parcel, int i) {

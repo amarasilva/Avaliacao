@@ -15,6 +15,7 @@ public class UserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
 
+        //organizando o adapter
         RecyclerView rc = findViewById(R.id.RecycleViewUsers);
         UserAdapter adapter = new UserAdapter(UserRepository.getInstance(this).getUsers());
         rc.setAdapter(adapter);

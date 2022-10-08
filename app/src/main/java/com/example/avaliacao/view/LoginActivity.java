@@ -21,6 +21,8 @@ public class LoginActivity extends AppCompatActivity{
             @Override
             public void onClick(View view) {
 
+                //intent que vai para o menu
+
                 Intent intent = new Intent(view.getContext(), MenuActivity.class);
                 startActivity(intent);
             }

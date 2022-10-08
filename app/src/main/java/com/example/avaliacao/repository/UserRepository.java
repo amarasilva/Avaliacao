@@ -19,8 +19,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserRepository implements Response.Listener<JSONArray>, Response.ErrorListener {
+
     private final String TAG = "UserRepository";
     private List<User> users;
+
     private static UserRepository instance;
     private Context contexto;
 
@@ -29,6 +31,7 @@ public class UserRepository implements Response.Listener<JSONArray>, Response.Er
         this.contexto = contexto;
         users = new ArrayList<>();
 
+        //gerando a requisição
         RequestQueue queue = Volley.newRequestQueue(contexto);
 
         JsonArrayRequest jaRequest = new JsonArrayRequest(Request.Method.GET,
@@ -38,7 +41,7 @@ public class UserRepository implements Response.Listener<JSONArray>, Response.Er
         queue.add(jaRequest);
     }
 
-
+//colocando o repositorio na variavel instance se tiver null
     public static UserRepository getInstance(Context contexto) {
         if (instance == null) {
             instance = new UserRepository(contexto);

@@ -17,6 +17,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
+        //carregando os dados dos repositorios antes de ir para as activitys especificas
         UserRepository.getInstance(this);
         PostsRepository.getInstance(this);
 
