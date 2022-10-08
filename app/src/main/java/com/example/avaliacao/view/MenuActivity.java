@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.avaliacao.R;
+import com.example.avaliacao.repository.PostsRepository;
+import com.example.avaliacao.repository.UserRepository;
 
 public class MenuActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -14,6 +16,10 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
+        UserRepository.getInstance(this);
+        PostsRepository.getInstance(this);
+
 
         findViewById(R.id.MAbuttonUser).setOnClickListener(this);
         findViewById(R.id.MAbuttonPost).setOnClickListener(this);
