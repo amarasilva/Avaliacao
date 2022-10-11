@@ -24,5 +24,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btPost" />
+
+        <Button
+            android:id="@+id/MAbuttonComments"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="COMMENTS" />
+
+        <Button
+            android:id="@+id/MAbuttonAlbum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Album" />
+
+        <Button
+            android:id="@+id/MAbuttonPhotos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PHOTOS" />
+
+        <Button
+            android:id="@+id/MAbuttonTodos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TODOS" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

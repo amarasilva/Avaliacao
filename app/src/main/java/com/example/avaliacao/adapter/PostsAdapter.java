@@ -33,11 +33,11 @@ public class PostsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         Posts obj = dados.get(position);
-        TextView tv1 = holder.itemView.findViewById(R.id.textViewVH_USERID_POSTS);
+        TextView tv1 = holder.itemView.findViewById(R.id.textViewVH_POSTID_COMMENTS);
         tv1.setText(obj.getUserId() + "");
-        ((TextView) holder.itemView.findViewById(R.id.textViewVH_ID_POSTS)).setText(obj.getId() + "");
-        ((TextView) holder.itemView.findViewById(R.id.textViewVH_TITLE_POSTS)).setText(obj.getTitle());
-        ((TextView) holder.itemView.findViewById(R.id.textViewVH_BODY_POSTS)).setText(obj.getBody());
+        ((TextView) holder.itemView.findViewById(R.id.textViewVH_ID_COMMENTS)).setText(obj.getId() + "");
+        ((TextView) holder.itemView.findViewById(R.id.textViewVH_NAME_COMMENTS)).setText(obj.getTitle());
+        ((TextView) holder.itemView.findViewById(R.id.textViewVH_EMAIL_COMMENTS)).setText(obj.getBody());
 
     }
 

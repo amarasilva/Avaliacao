@@ -5,4 +5,8 @@
     <string name="entrar">Entrar</string>
     <string name="btUsers">Users</string>
     <string name="btPost">Post</string>
+    <string name="name">Name</string>
+    <string name="id">ID</string>
+    <string name="username">Username</string>
+    <string name="email">E-mail</string>
 </resources>

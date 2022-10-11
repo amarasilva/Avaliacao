@@ -7,7 +7,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -16,10 +16,24 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/id"
+            android:textStyle="bold" />
+
+        <TextView
             android:id="@+id/textViewVH_ID"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TextView" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/name"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textViewVH_NAME"
@@ -28,16 +42,35 @@
             android:text="TextView" />
 
         <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/username"
+            android:textStyle="bold" />
+
+        <TextView
             android:id="@+id/textViewVH_USERNAME"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TextView" />
 
         <TextView
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/email"
+            android:textStyle="bold" />
+
+        <TextView
             android:id="@+id/textViewVH_EMAIL"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TextView" />
+
+        <TextView
+            android:id="@+id/textViewLINHA_BRANCA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
