@@ -1,0 +1,33 @@
+package com.example.avaliacao.presenter;
+
+import android.content.Intent;
+
+import com.example.avaliacao.model.User;
+import com.example.avaliacao.repository.UserRepository;
+import com.example.avaliacao.view.MenuActivity;
+import com.example.avaliacao.view.UserActivity;
+
+public class LoginPresenter implements LoginPresenterContract.presenter {
+    private LoginPresenterContract.view view;
+
+    public LoginPresenter(LoginPresenterContract.view view) {
+        this.view = view;
+    }
+
+    @Override
+    public void checkLogin(String login, String senha) {
+        UserRepository repo = UserRepository.getInstance(view.getActivity());
+        User u = repo.getUserByUserLogin(login);
+        if (u == null || !u.getUsername().equals(senha)) {
+            view.message("Usuário ou senha Inválido");
+        } else {
+             validLogin(u);
+        }
+    }
+
+    @Override
+    public void validLogin(User user) {
+        Intent intent = new Intent(view.getActivity(),MenuActivity.class);
+        view.getActivity().startActivity(intent);
+    }
+}
