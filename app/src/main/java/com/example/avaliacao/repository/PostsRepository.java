@@ -24,6 +24,8 @@ public class PostsRepository implements Response.Listener<JSONArray>, Response.E
     private static PostsRepository instance;
     private Context contexto;
 
+    private OnReadyListener onReadyListener;
+
     private PostsRepository(Context contexto){
         super();
         this.contexto = contexto;
@@ -39,22 +41,24 @@ public class PostsRepository implements Response.Listener<JSONArray>, Response.E
 
     }
 
-    public static PostsRepository getInstance(Context contexto) {
+    public static PostsRepository getInstance(){
+        return instance;
+    }
+
+    public static PostsRepository getInstance(Context contexto, OnReadyListener orl) {
         if (instance == null) {
             instance = new PostsRepository(contexto);
+            instance.onReadyListener = orl;
+        }
+        if (!instance.getPostss().isEmpty()){
+            if (orl !=null){
+                orl.onReady();
+                instance.onReadyListener = null;
+            }
         }
         return instance;
     }
 
-    public Posts createPostFromJson(JSONObject json) {
-        try {
-            return new Posts(json.getInt("userId"), json.getInt("id"),
-                    json.getString("title"), json.getString("body"));
-        } catch (JSONException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
 
     public List<Posts> getPostss() {
         return postss;
@@ -90,6 +94,10 @@ public class PostsRepository implements Response.Listener<JSONArray>, Response.E
             }
 
         }
-        Log.e(TAG, "onResponse: terminei");
+        if (onReadyListener!=null) {
+            onReadyListener.onReady();
+        }
+        onReadyListener = null;
+        Log.e(TAG, "onResponse: FIM");
     }
 }

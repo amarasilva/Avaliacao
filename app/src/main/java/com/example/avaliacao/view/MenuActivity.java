@@ -23,12 +23,6 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_menu);
 
 
-        //carregando os dados dos repositorios antes de ir para as activitys especificas
-        PostsRepository.getInstance(this);
-        CommentsRepository.getInstance(this);
-        AlbumsRepository.getInstance(this);
-        PhotosRepository.getInstance(this);
-        TodosRepository.getInstance(this);
 
         findViewById(R.id.MAbuttonUser).setOnClickListener(this);
         findViewById(R.id.MAbuttonPost).setOnClickListener(this);

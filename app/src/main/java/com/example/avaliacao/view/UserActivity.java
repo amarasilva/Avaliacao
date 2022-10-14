@@ -21,7 +21,7 @@ public class UserActivity extends AppCompatActivity {
             @Override
             public void onReady() {
                 //organizando o adapter
-                RecyclerView rc = findViewById(R.id.RecycleViewUser);
+                RecyclerView rc = findViewById(R.id.RecycleViewUsers);
                 UserAdapter adapter = new UserAdapter(UserRepository.getInstance().getUsers());
                 rc.setAdapter(adapter);
                 LinearLayoutManager llm1 = new LinearLayoutManager(getApplicationContext());

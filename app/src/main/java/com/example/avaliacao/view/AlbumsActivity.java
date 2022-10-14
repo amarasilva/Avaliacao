@@ -8,7 +8,10 @@ import android.os.Bundle;
 
 import com.example.avaliacao.R;
 import com.example.avaliacao.adapter.AlbumsAdapter;
+import com.example.avaliacao.adapter.UserAdapter;
 import com.example.avaliacao.repository.AlbumsRepository;
+import com.example.avaliacao.repository.OnReadyListener;
+import com.example.avaliacao.repository.UserRepository;
 
 public class AlbumsActivity extends AppCompatActivity {
 
@@ -17,12 +20,16 @@ public class AlbumsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_albums);
 
-        RecyclerView rc = findViewById(R.id.RecycleViewUser);
-        AlbumsAdapter adapter = new AlbumsAdapter(AlbumsRepository.getInstance(this).getAlbumss());
-        rc.setAdapter(adapter);
-        LinearLayoutManager llm1 = new LinearLayoutManager(this);
-        rc.setLayoutManager(llm1);
-
-
+        AlbumsRepository.getInstance(this, new OnReadyListener() {
+            @Override
+            public void onReady() {
+                //organizando o adapter
+                RecyclerView rc = findViewById(R.id.RecycleViewAlbums);
+                AlbumsAdapter adapter = new AlbumsAdapter(AlbumsRepository.getInstance().getAlbumss());
+                rc.setAdapter(adapter);
+                LinearLayoutManager llm1 = new LinearLayoutManager(getApplicationContext());
+                rc.setLayoutManager(llm1);
+            }
+        });
     }
 }

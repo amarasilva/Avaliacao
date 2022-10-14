@@ -25,6 +25,7 @@ public class PhotosRepository implements Response.Listener<JSONArray>,Response.E
     private List<Photos> photoss;
     private static PhotosRepository instance;
     private Context contexto;
+    private OnReadyListener onReadyListener;
 
     private PhotosRepository(Context contexto){
         super();
@@ -41,9 +42,20 @@ public class PhotosRepository implements Response.Listener<JSONArray>,Response.E
 
     }
 
-    public static PhotosRepository getInstance(Context contexto) {
+    public static PhotosRepository getInstance(){
+        return instance;
+    }
+
+    public static PhotosRepository getInstance(Context contexto, OnReadyListener orl) {
         if (instance == null) {
             instance = new PhotosRepository(contexto);
+            instance.onReadyListener = orl;
+        }
+        if (!instance.getPhotos().isEmpty()){
+            if (orl !=null){
+                orl.onReady();
+                instance.onReadyListener = null;
+            }
         }
         return instance;
     }
@@ -91,7 +103,11 @@ public class PhotosRepository implements Response.Listener<JSONArray>,Response.E
             }
 
         }
-        Log.e(TAG, "onResponse: terminei");
+        if (onReadyListener!=null) {
+            onReadyListener.onReady();
+        }
+        onReadyListener = null;
+        Log.e(TAG, "onResponse: FIM");
     }
 
 

@@ -25,6 +25,7 @@ public class AlbumsRepository implements Response.Listener<JSONArray>,Response.E
     private List<Albums> albumss;
     private static AlbumsRepository instance;
     private Context contexto;
+    private OnReadyListener onReadyListener;
 
     private AlbumsRepository(Context contexto){
         super();
@@ -41,9 +42,20 @@ public class AlbumsRepository implements Response.Listener<JSONArray>,Response.E
 
     }
 
-    public static AlbumsRepository getInstance(Context contexto) {
+    public static AlbumsRepository getInstance(){
+        return instance;
+    }
+
+    public static AlbumsRepository getInstance(Context contexto, OnReadyListener orl) {
         if (instance == null) {
             instance = new AlbumsRepository(contexto);
+            instance.onReadyListener = orl;
+        }
+        if (!instance.getAlbumss().isEmpty()){
+            if (orl !=null){
+                orl.onReady();
+                instance.onReadyListener = null;
+            }
         }
         return instance;
     }
@@ -92,7 +104,11 @@ public class AlbumsRepository implements Response.Listener<JSONArray>,Response.E
             }
 
         }
-        Log.e(TAG, "onResponse: fim do carregamento");
+        if (onReadyListener!=null) {
+            onReadyListener.onReady();
+        }
+        onReadyListener = null;
+        Log.e(TAG, "onResponse: FIM");
 
 
 

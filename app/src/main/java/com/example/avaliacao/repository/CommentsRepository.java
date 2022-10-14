@@ -25,6 +25,7 @@ public class CommentsRepository implements Response.Listener<JSONArray>,Response
     private List<Comments> commentss;
     private static CommentsRepository instance;
     private Context contexto;
+    private OnReadyListener onReadyListener;
 
     private CommentsRepository(Context contexto){
         super();
@@ -41,9 +42,20 @@ public class CommentsRepository implements Response.Listener<JSONArray>,Response
 
     }
 
-    public static CommentsRepository getInstance(Context contexto) {
+    public static CommentsRepository getInstance(){
+        return instance;
+    }
+
+    public static CommentsRepository getInstance(Context contexto, OnReadyListener orl) {
         if (instance == null) {
             instance = new CommentsRepository(contexto);
+            instance.onReadyListener = orl;
+        }
+        if (!instance.getCommentss().isEmpty()){
+            if (orl !=null){
+                orl.onReady();
+                instance.onReadyListener = null;
+            }
         }
         return instance;
     }
@@ -91,6 +103,10 @@ public class CommentsRepository implements Response.Listener<JSONArray>,Response
             }
 
         }
-        Log.e(TAG, "onResponse: terminei");
+        if (onReadyListener!=null) {
+            onReadyListener.onReady();
+        }
+        onReadyListener = null;
+        Log.e(TAG, "onResponse: FIM");
     }
 }

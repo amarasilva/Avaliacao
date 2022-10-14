@@ -8,7 +8,10 @@ import android.os.Bundle;
 
 import com.example.avaliacao.R;
 import com.example.avaliacao.adapter.PhotosAdapter;
+import com.example.avaliacao.adapter.UserAdapter;
+import com.example.avaliacao.repository.OnReadyListener;
 import com.example.avaliacao.repository.PhotosRepository;
+import com.example.avaliacao.repository.UserRepository;
 
 public class PhotosActivity extends AppCompatActivity {
 
@@ -17,11 +20,16 @@ public class PhotosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photos);
 
-        RecyclerView rc = findViewById(R.id.RecycleViewUser);
-        PhotosAdapter adapter = new PhotosAdapter(PhotosRepository.getInstance(this).getPhotos());
-        rc.setAdapter(adapter);
-        LinearLayoutManager llm1 = new LinearLayoutManager(this);
-        rc.setLayoutManager(llm1);
-
+        PhotosRepository.getInstance(this, new OnReadyListener() {
+            @Override
+            public void onReady() {
+                //organizando o adapter
+                RecyclerView rc = findViewById(R.id.RecycleViewPhotos);
+                PhotosAdapter adapter = new PhotosAdapter(PhotosRepository.getInstance().getPhotos());
+                rc.setAdapter(adapter);
+                LinearLayoutManager llm1 = new LinearLayoutManager(getApplicationContext());
+                rc.setLayoutManager(llm1);
+            }
+        });
     }
 }

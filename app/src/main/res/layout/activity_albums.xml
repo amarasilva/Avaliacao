@@ -7,7 +7,7 @@
     tools:context=".view.UserActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RecycleViewUser"
+        android:id="@+id/RecycleViewAlbums"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="112dp"

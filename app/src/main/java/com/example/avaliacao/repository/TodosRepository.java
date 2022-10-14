@@ -27,6 +27,8 @@ public class TodosRepository implements Response.Listener<JSONArray>,Response.Er
     private static TodosRepository instance;
     private Context contexto;
 
+    private OnReadyListener onReadyListener;
+
     private TodosRepository(Context contexto) {
         super();
         this.contexto = contexto;
@@ -42,23 +44,26 @@ public class TodosRepository implements Response.Listener<JSONArray>,Response.Er
         queue.add(jaRequest);
     }
 
-    public static TodosRepository getInstance(Context contexto) {
+    // getInstance para ser usado sem contexto
+    public static TodosRepository getInstance(){ return instance; }
+
+    //getInstance com contexto colocando o repositorio na variavel instance se tiver null
+    public static TodosRepository getInstance(Context contexto, OnReadyListener orl) {
         if (instance == null) {
             instance = new TodosRepository(contexto);
+            instance.onReadyListener = orl;
+        }
+        if (!instance.getTodos().isEmpty()){
+            if (orl !=null){
+                orl.onReady();
+                instance.onReadyListener = null;
+            }
         }
         return instance;
     }
 
 
-    public Todos createTodosFromJson(JSONObject json) {
-        try {
-            return new Todos(json.getInt("userId"), json.getInt("id"),
-                    json.getString("title"), json.getString("completed"));
-        } catch (JSONException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
+
 
     public List<Todos> getTodos() {
         return todos;
@@ -95,7 +100,11 @@ public class TodosRepository implements Response.Listener<JSONArray>,Response.Er
             }
 
         }
-        Log.e(TAG, "onResponse: FIM ");
+        if (onReadyListener!=null) {
+            onReadyListener.onReady();
+        }
+        onReadyListener = null;
+        Log.e(TAG, "onResponse: FIM");
     }
 
     }
