@@ -26,6 +26,9 @@ public class UserRepository implements Response.Listener<JSONArray>, Response.Er
     private static UserRepository instance;
     private Context contexto;
 
+    //criando o atributo OnReadyListener para utilizar a interface OnReadyListener
+    private OnReadyListener onReadyListener;
+
     private UserRepository(Context contexto) {
         super();
         this.contexto = contexto;
@@ -40,24 +43,25 @@ public class UserRepository implements Response.Listener<JSONArray>, Response.Er
 
         queue.add(jaRequest);
     }
-
-//colocando o repositorio na variavel instance se tiver null
-    public static UserRepository getInstance(Context contexto) {
-        if (instance == null) {
-            instance = new UserRepository(contexto);
-        }
+// getInstance para ser usado sem contexto
+    public static UserRepository getInstance(){
         return instance;
     }
 
 
-    public User createUserFromJson(JSONObject json) {
-        try {
-            return new User(json.getInt("id"), json.getString("name"),
-                    json.getString("username"), json.getString("email"));
-        } catch (JSONException e) {
-            e.printStackTrace();
-            return null;
+//getInstance com contexto colocando o repositorio na variavel instance se tiver null
+    public static UserRepository getInstance(Context contexto, OnReadyListener orl) {
+        if (instance == null) {
+            instance = new UserRepository(contexto);
+            instance.onReadyListener = orl;
         }
+        if (!instance.getUsers().isEmpty()){
+            if (orl !=null){
+                orl.onReady();
+                instance.onReadyListener = null;
+            }
+        }
+        return instance;
     }
 
     public List<User> getUsers() {
@@ -86,7 +90,6 @@ public class UserRepository implements Response.Listener<JSONArray>, Response.Er
         return ret;
     }
 
-
     @Override
     public void onResponse(JSONArray response) {
         Log.e(TAG, "onResponse: " + response.length());
@@ -101,7 +104,11 @@ public class UserRepository implements Response.Listener<JSONArray>, Response.Er
             }
 
         }
-        Log.e(TAG, "onResponse: terminei");
+        if (onReadyListener!=null) {
+            onReadyListener.onReady();
+        }
+        onReadyListener = null;
+        Log.e(TAG, "onResponse: FIM");
     }
 
     @Override

@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import com.example.avaliacao.R;
 import com.example.avaliacao.adapter.UserAdapter;
+import com.example.avaliacao.repository.OnReadyListener;
 import com.example.avaliacao.repository.UserRepository;
 
 public class UserActivity extends AppCompatActivity {
@@ -15,13 +16,19 @@ public class UserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
 
-        //organizando o adapter
-        RecyclerView rc = findViewById(R.id.RecycleViewUser);
-        UserAdapter adapter = new UserAdapter(UserRepository.getInstance(this).getUsers());
-        rc.setAdapter(adapter);
-        LinearLayoutManager llm1 = new LinearLayoutManager(this);
-        rc.setLayoutManager(llm1);
 
-
+        UserRepository.getInstance(this, new OnReadyListener() {
+            @Override
+            public void onReady() {
+                //organizando o adapter
+                RecyclerView rc = findViewById(R.id.RecycleViewUser);
+                UserAdapter adapter = new UserAdapter(UserRepository.getInstance().getUsers());
+                rc.setAdapter(adapter);
+                LinearLayoutManager llm1 = new LinearLayoutManager(getApplicationContext());
+                rc.setLayoutManager(llm1);
+            }
+        });
     }
 }
+
+

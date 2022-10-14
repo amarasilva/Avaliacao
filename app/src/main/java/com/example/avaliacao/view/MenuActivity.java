@@ -24,7 +24,6 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
 
 
         //carregando os dados dos repositorios antes de ir para as activitys especificas
-        UserRepository.getInstance(this);
         PostsRepository.getInstance(this);
         CommentsRepository.getInstance(this);
         AlbumsRepository.getInstance(this);

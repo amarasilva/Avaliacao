@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.example.avaliacao.R;
 import com.example.avaliacao.presenter.LoginPresenter;
 import com.example.avaliacao.presenter.LoginPresenterContract;
+import com.example.avaliacao.repository.OnReadyListener;
 import com.example.avaliacao.repository.UserRepository;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -25,7 +26,12 @@ public class LoginActivity extends AppCompatActivity implements LoginPresenterCo
         setContentView(R.layout.activity_login);
 
 
-        UserRepository.getInstance(this);
+        UserRepository.getInstance(this, new OnReadyListener() {
+            @Override
+            public void onReady() {
+
+            }
+        });
 
         //insrtancia a classe loginPresenter
         this.presenter = new LoginPresenter(this);

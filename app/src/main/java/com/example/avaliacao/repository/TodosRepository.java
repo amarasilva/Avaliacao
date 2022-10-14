@@ -95,7 +95,7 @@ public class TodosRepository implements Response.Listener<JSONArray>,Response.Er
             }
 
         }
-        Log.e(TAG, "onResponse: FIM DO PROCESSAMENTO ");
+        Log.e(TAG, "onResponse: FIM ");
     }
 
     }
