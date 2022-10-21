@@ -8,11 +8,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
+        android:nestedScrollingEnabled="false"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="AlbumID"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textViewVH_ALBUMID_PHOTOS"
@@ -21,16 +29,37 @@
             android:text="TextView" />
 
         <TextView
+            android:id="@+id/textView16"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/id"
+            android:textStyle="bold" />
+
+        <TextView
             android:id="@+id/textViewVH_ID_PHOTOS"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView" />
 
         <TextView
+            android:id="@+id/textView17"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Title"
+            android:textStyle="bold" />
+
+        <TextView
             android:id="@+id/textViewVH_TITLE_PHOTOS"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView" />
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="URL"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textViewVH_URL_PHOTOS"
@@ -42,11 +71,8 @@
             android:id="@+id/textViewVH_THUMBNAILURL_PHOTOS"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="ThumbnailUrl"
+            android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/textViewLINHA_BRANCA"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

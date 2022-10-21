@@ -12,7 +12,6 @@ import java.util.List;
 public class UserSQLRepository {
 
     private final String TAG = "UserSQLRepository";
-    private List<User> users;
     private static UserSQLRepository instance;
     private Context contexto;
     private SQLiteDatabase database;
@@ -29,23 +28,77 @@ public class UserSQLRepository {
     private UserSQLRepository(Context contexto) {
         super();
         this.contexto = contexto;
-        users = new ArrayList<>();
         DataBaseHelper dataBaseHelper = new DataBaseHelper(contexto);
         database = dataBaseHelper.getWritableDatabase();
-        String sql = "select id, name, username, email from users where id=? and name = ?;";
-        User u = new User(1, "1","1","1");
-        String[] args = {u.getId()+"", "jean"};
-        Cursor cursor = database.rawQuery(sql,args);
-        cursor.moveToFirst();
-        do {
-            User user = new User(
-                    cursor.getInt(1),
-                    cursor.getString(2),
-                    cursor.getString(3),
-                    cursor.getString(4));
-            users.add(user);
-        } while (cursor.moveToNext());
     }
+
+   /* public List<User> getUsers() {
+        String sql = "select id, name, userName, email from users where id=? and name = ?;";
+        User u = new User(1, "1", "1", "1");
+        String[] args = {u.getId() + "", "jean"};
+        Cursor cursor = database.rawQuery(sql, args);
+        cursor.moveToFirst();
+        List<User> users = new ArrayList<>();
+        do {
+            users.add(userFromCursor(cursor));
+        } while (cursor.moveToNext());
+        return users;
+    }
+*/
+    public User getUserById(int id) {
+        String sql = "select id, name, userName, email from users where id=? ;";
+        String[] args = {"" + id};
+        Cursor cursor = database.rawQuery(sql, args);
+        if (cursor.moveToFirst()) {
+            return userFromCursor(cursor);
+        } else {
+            return null;
+        }
+    }
+
+  /*  public List<User> getUsersByName(String name) {
+        String sql = "select id, name, userName, email from users where name like ?;";
+        User u = new User(1, "1", "1", "1");
+        String[] args = {"%" + name + "%"};
+        Cursor cursor = database.rawQuery(sql, args);
+        cursor.moveToFirst();
+        List<User> users = new ArrayList<>();
+        do {
+            users.add(userFromCursor(cursor));
+        } while (cursor.moveToNext());
+        return users;
+    }
+*/
+    //
+    public void insertUser(User user) {
+        String sql = "insert into users (id, name, userName, email) values (?, ?, ?, ?);";
+        //para usar execSQL os args são um array de Object, não de Strings
+        Object[] args = {user.getId(), user.getName(), user.getUsername(), user.getUsername()};
+        database.execSQL(sql, args);
+    }
+
+   /* public void updateUser(User user) {
+        String sql = "update  users set name = ?, userName = ?, userName = ?;";
+        //para usar execSQL os args são um array de Object, não de Strings
+        Object[] args = {user.getName(), user.getUsername(), user.getUsername()};
+        database.execSQL(sql, args);
+    }
+
+    public void deleteUser(User user) {
+        String sql = "delete from users where id = ?;";
+        //para usar execSQL os args são um array de Object, não de Strings
+        Object[] args = {user.getId()};
+        database.execSQL(sql, args);
+    }
+*/
+
+    private User userFromCursor(Cursor cursor) {
+        User user = new User(
+                cursor.getInt(0),
+                cursor.getString(1),
+                cursor.getString(2),
+                cursor.getString(3));
+        return user;
+    }
+
 }
-
-

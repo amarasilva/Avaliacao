@@ -29,8 +29,8 @@ public class User implements Parcelable {
         return name;
     }
 
-    public void setUsername(String username) {this.username = username;
-    }
+    //public void setUsername(String username) {this.username = username;}
+
     public String getUsername() {
         return username;
     }
@@ -38,7 +38,6 @@ public class User implements Parcelable {
     public String getEmail() {
         return email;
     }
-
 
 //criando o metodo construtor a partir de um parcelable
     protected User(Parcel in) {

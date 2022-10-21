@@ -15,10 +15,24 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/textView20"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PostID"
+            android:textStyle="bold" />
+
+        <TextView
             android:id="@+id/textViewVH_POSTID_COMMENTS"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView" />
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/id"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textViewVH_ID_COMMENTS"
@@ -27,16 +41,37 @@
             android:text="TextView" />
 
         <TextView
+            android:id="@+id/textView22"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/name"
+            android:textStyle="bold" />
+
+        <TextView
             android:id="@+id/textViewVH_NAME_COMMENTS"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView" />
 
         <TextView
+            android:id="@+id/textView23"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/email"
+            android:textStyle="bold" />
+
+        <TextView
             android:id="@+id/textViewVH_EMAIL_COMMENTS"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView" />
+
+        <TextView
+            android:id="@+id/textView24"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Body"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textViewVH_BODY_COMMENTS"

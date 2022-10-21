@@ -64,7 +64,7 @@ public class PostsRepository implements Response.Listener<JSONArray>, Response.E
         return postss;
     }
 
-    public Posts getPostsById(int id) {
+/*    public Posts getPostsById(int id) {
         Posts ret = null;
         for (Posts u : postss) {
             if (u.getId() == id) {
@@ -73,7 +73,7 @@ public class PostsRepository implements Response.Listener<JSONArray>, Response.E
         }
         return ret;
     }
-
+*/
 
     @Override
     public void onErrorResponse(VolleyError error) {

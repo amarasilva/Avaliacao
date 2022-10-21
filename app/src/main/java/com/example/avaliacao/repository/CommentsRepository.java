@@ -60,7 +60,7 @@ public class CommentsRepository implements Response.Listener<JSONArray>,Response
         return instance;
     }
 
-    public Comments createCommentsFromJson(JSONObject json) {
+/*    public Comments createCommentsFromJson(JSONObject json) {
         try {
             return new Comments(json.getInt("postId"), json.getInt("id"),
                     json.getString("name"), json.getString("email"), json.getString("body") );
@@ -69,12 +69,12 @@ public class CommentsRepository implements Response.Listener<JSONArray>,Response
             return null;
         }
     }
-
+*/
     public List<Comments> getCommentss() {
         return commentss;
     }
 
-    public Comments getCommentsById(int id) {
+ /*   public Comments getCommentsById(int id) {
         Comments ret = null;
         for (Comments u : commentss) {
             if (u.getId() == id) {
@@ -83,7 +83,7 @@ public class CommentsRepository implements Response.Listener<JSONArray>,Response
         }
         return ret;
     }
-
+*/
     @Override
     public void onErrorResponse(VolleyError error) {
         Log.e(TAG, "onErrorResponse: " + error.getMessage());

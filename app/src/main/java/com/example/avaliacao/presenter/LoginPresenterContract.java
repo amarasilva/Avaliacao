@@ -9,6 +9,7 @@ public class LoginPresenterContract {
     public interface view {
         public void message(String msg);
         public Activity getActivity();
+        public void preferencesUserUpdate(int userId);
     }
 
     public interface presenter {

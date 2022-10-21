@@ -74,7 +74,7 @@ public class PhotosRepository implements Response.Listener<JSONArray>,Response.E
         return photoss;
     }
 
-    public Photos getPhotosById(int id) {
+   /* public Photos getPhotosById(int id) {
         Photos ret = null;
         for (Photos u : photoss) {
             if (u.getId() == id) {
@@ -83,7 +83,7 @@ public class PhotosRepository implements Response.Listener<JSONArray>,Response.E
         }
         return ret;
     }
-
+*/
     @Override
     public void onErrorResponse(VolleyError error) {
         Log.e(TAG, "onErrorResponse: " + error.getMessage());

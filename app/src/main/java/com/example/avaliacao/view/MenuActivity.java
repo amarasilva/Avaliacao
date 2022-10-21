@@ -23,7 +23,6 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_menu);
 
 
-
         findViewById(R.id.MAbuttonUser).setOnClickListener(this);
         findViewById(R.id.MAbuttonPost).setOnClickListener(this);
         findViewById(R.id.MAbuttonComments).setOnClickListener(this);

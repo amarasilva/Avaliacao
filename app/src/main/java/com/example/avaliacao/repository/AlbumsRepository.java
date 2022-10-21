@@ -60,7 +60,7 @@ public class AlbumsRepository implements Response.Listener<JSONArray>,Response.E
         return instance;
     }
 
-    public Albums createAlbumsFromJson(JSONObject json) {
+/*    public Albums createAlbumsFromJson(JSONObject json) {
         try {
             return new Albums (json.getInt("usertId"), json.getInt("id"),
                     json.getString("title"));
@@ -69,21 +69,21 @@ public class AlbumsRepository implements Response.Listener<JSONArray>,Response.E
             return null;
         }
     }
-
+*/
     public List<Albums> getAlbumss() {
         return albumss;
     }
 
-    public Albums getAlbumsById(int id) {
-        Albums ret = null;
-        for (Albums u : albumss) {
-            if (u.getId() == id) {
-                ret = u;
-            }
-        }
-        return ret;
-    }
-
+    /*   public Albums getAlbumsById(int id) {
+           Albums ret = null;
+           for (Albums u : albumss) {
+               if (u.getId() == id) {
+                   ret = u;
+               }
+           }
+           return ret;
+       }
+   */
     @Override
     public void onErrorResponse(VolleyError error) {
         Log.e(TAG, "onErrorResponse: " + error.getMessage());

@@ -15,16 +15,37 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/textView25"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/userid"
+            android:textStyle="bold" />
+
+        <TextView
             android:id="@+id/textViewVH_USERID_ALBUMS"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView" />
 
         <TextView
+            android:id="@+id/textView26"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/id"
+            android:textStyle="bold" />
+
+        <TextView
             android:id="@+id/textViewVH_ID_ALBUMS"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView" />
+
+        <TextView
+            android:id="@+id/textView27"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Title"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textViewVH_TITLE_ALBUMS"

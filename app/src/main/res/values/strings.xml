@@ -7,6 +7,9 @@
     <string name="btPost">Post</string>
     <string name="name">Name</string>
     <string name="id">ID</string>
-    <string name="username">Username</string>
+    <string name="username">UserName</string>
     <string name="email">E-mail</string>
+    <string name="userid">UserID</string>
+
+
 </resources>
