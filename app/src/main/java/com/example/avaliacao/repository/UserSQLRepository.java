@@ -56,7 +56,7 @@ public class UserSQLRepository {
         }
     }
 
-  /*  public List<User> getUsersByName(String name) {
+   public List<User> getUsersByName(String name) {
         String sql = "select id, name, userName, email from users where name like ?;";
         User u = new User(1, "1", "1", "1");
         String[] args = {"%" + name + "%"};
@@ -68,7 +68,7 @@ public class UserSQLRepository {
         } while (cursor.moveToNext());
         return users;
     }
-*/
+
     //
     public void insertUser(User user) {
         String sql = "insert into users (id, name, userName, email) values (?, ?, ?, ?);";

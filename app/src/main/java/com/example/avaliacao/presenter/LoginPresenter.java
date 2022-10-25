@@ -29,6 +29,7 @@ public class LoginPresenter implements LoginPresenterContract.presenter {
     @Override
     public void validLogin(User user) {
         Intent intent = new Intent(view.getActivity(),MenuActivity.class);
+        view.preferencesUserUpdate(user.getId());
         view.getActivity().startActivity(intent);
     }
 }

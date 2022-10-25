@@ -30,14 +30,16 @@ public class LoginActivity extends AppCompatActivity implements LoginPresenterCo
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         //SharedPreferences
         SharedPreferences preferences = getPreferences(0);
+        //criando variaveis - por padão falso/falso/-1
         boolean sqlUpdated = preferences.getBoolean("sqlUpdated", false);
         boolean logged = preferences.getBoolean("logged", false);
         int userId = preferences.getInt("userId", -1);
 
         Log.d("LoginActivity", "Preferences: " + sqlUpdated + ", " + logged + ", " + userId);
-
+        //criando as condicionais
         if (userId >= 0 && sqlUpdated) {
             User u = UserSQLRepository.getInstance(getActivity()).getUserById(userId);
             if (u != null) {
@@ -62,8 +64,10 @@ public class LoginActivity extends AppCompatActivity implements LoginPresenterCo
                 }
         );
 
+        //testando o BD
+        Log.e("TAG", "onCreate: depois do getInstance "+UserSQLRepository.getInstance(getActivity()).getUserById(1).getUsername());
 
-        //insrtancia a classe loginPresenter
+        //instancia a classe loginPresenter
         this.presenter = new LoginPresenter(this);
 
         //captura o botao LAbutton1
