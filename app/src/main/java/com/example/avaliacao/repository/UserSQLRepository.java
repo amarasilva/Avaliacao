@@ -59,8 +59,15 @@ public class UserSQLRepository implements UserRepositoryInterface {
     }
 
     @Override
-    public User getUserByUserLogin(String login) {
-        return null;
+    public User getUserByUserLogin(String username) {
+        String sql = "select id, name, username, email from users where username=? ;";
+        String[] args = {"" +username};
+        Cursor cursor = database.rawQuery(sql, args);
+        if (cursor.moveToFirst()) {
+            return userFromCursor(cursor);
+        } else {
+            return null;
+        }
     }
 
     @Override

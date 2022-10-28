@@ -20,7 +20,7 @@ public class LoginPresenter implements LoginPresenterContract.presenter {
     public void checkLogin(String login, String senha) {
         //UserRepository repo = UserRepository.getInstance();
         //User u = repo.getUserByUserLogin(login);
-        UserServices userServices = new UserServices(UserServices.REST_REPO, view.getActivity());
+        UserServices userServices = new UserServices(UserServices.SQLITE_REPO, view.getActivity());
         User u = userServices.getUserByUserLogin(login);
 
         if (u == null || !u.getUsername().equals(senha)) {

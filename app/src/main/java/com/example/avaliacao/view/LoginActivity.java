@@ -65,7 +65,7 @@ public class LoginActivity extends AppCompatActivity implements LoginPresenterCo
         );
 
         //testando o BD
-        Log.e("TAG", "onCreate: depois do getInstance "+UserSQLRepository.getInstance(getActivity()).getUserById(1).getUsername());
+        Log.e("TAG", "onCreate: depois do getInstance "+UserSQLRepository.getInstance(getActivity()).getUserById(2).getUsername());
 
         //instancia a classe loginPresenter
         this.presenter = new LoginPresenter(this);
