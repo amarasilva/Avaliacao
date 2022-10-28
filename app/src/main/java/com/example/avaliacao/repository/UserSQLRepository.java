@@ -9,7 +9,7 @@ import com.example.avaliacao.model.User;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserSQLRepository {
+public class UserSQLRepository implements UserRepositoryInterface {
 
     private final String TAG = "UserSQLRepository";
     private static UserSQLRepository instance;
@@ -32,7 +32,8 @@ public class UserSQLRepository {
         database = dataBaseHelper.getWritableDatabase();
     }
 
-   /* public List<User> getUsers() {
+    @Override
+    public List<User> getUsers() {
         String sql = "select id, name, userName, email from users where id=? and name = ?;";
         User u = new User(1, "1", "1", "1");
         String[] args = {u.getId() + "", "jean"};
@@ -44,7 +45,8 @@ public class UserSQLRepository {
         } while (cursor.moveToNext());
         return users;
     }
-*/
+
+    @Override
     public User getUserById(int id) {
         String sql = "select id, name, userName, email from users where id=? ;";
         String[] args = {"" + id};
@@ -56,7 +58,13 @@ public class UserSQLRepository {
         }
     }
 
-   public List<User> getUsersByName(String name) {
+    @Override
+    public User getUserByUserLogin(String login) {
+        return null;
+    }
+
+    @Override
+    public List<User> getUsersByName(String name) {
         String sql = "select id, name, userName, email from users where name like ?;";
         User u = new User(1, "1", "1", "1");
         String[] args = {"%" + name + "%"};
@@ -69,28 +77,33 @@ public class UserSQLRepository {
         return users;
     }
 
-    //
-    public void insertUser(User user) {
+    @Override
+    public User addUser(User user) {
         String sql = "insert into users (id, name, userName, email) values (?, ?, ?, ?);";
         //para usar execSQL os args são um array de Object, não de Strings
         Object[] args = {user.getId(), user.getName(), user.getUsername(), user.getUsername()};
         database.execSQL(sql, args);
+        return user;
     }
 
-   /* public void updateUser(User user) {
+    @Override
+    public User updateUser(User user) {
         String sql = "update  users set name = ?, userName = ?, userName = ?;";
         //para usar execSQL os args são um array de Object, não de Strings
         Object[] args = {user.getName(), user.getUsername(), user.getUsername()};
         database.execSQL(sql, args);
+        return user;
     }
 
-    public void deleteUser(User user) {
+    @Override
+    public User removeUser(User user) {
         String sql = "delete from users where id = ?;";
         //para usar execSQL os args são um array de Object, não de Strings
         Object[] args = {user.getId()};
         database.execSQL(sql, args);
+        return user;
     }
-*/
+
 
     private User userFromCursor(Cursor cursor) {
         User user = new User(

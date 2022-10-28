@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity implements LoginPresenterCo
                         if (!sqlUpdated) {
                             List<User> users = UserRepository.getInstance().getUsers();
                             for (User u : users) {
-                                UserSQLRepository.getInstance(getActivity()).insertUser(u);
+                                UserSQLRepository.getInstance(getActivity()).addUser(u);
                             }
                             SharedPreferences preferences = getPreferences(0);
                             SharedPreferences.Editor editor = preferences.edit();
